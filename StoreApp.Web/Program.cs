@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using StoreApp.Data.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //Controllers'larla Views'leri ilişikeldirdiği bir yapı kullanacağımıza dair servisi ekleyelim
@@ -5,7 +8,9 @@ builder.Services.AddControllersWithViews();
 
 
 
-
+builder.Services.AddDbContext<StoreDbContext>(options => {
+    options.UseSqlite(builder.Configuration["ConnectionStrings:StoreDbConnection"]);
+});
 
 
 
