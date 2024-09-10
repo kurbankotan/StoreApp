@@ -9,8 +9,20 @@ public class HomeController:Controller
     {
         _storeRepository = storeRepository;
     }
-    public ActionResult Index()              // public ActionResult Index() => View(); şeklinde de tanımlanabilir eğer parantez istenmiyorsa
+    public ActionResult Index()              // public ActionResult Index() => View(_storeRepository.Products); şeklinde de tanımlanabilir eğer parantez istenmiyorsa
     {
-        return View();
+        var products = _storeRepository.Products.Select(p => new ProductViewModel{
+            Id = p.Id,
+            Name = p.Name,
+            Description = p.Description,
+            Price = p.Price        }).ToList();
+
+        return View(new ProductListViewModel{
+            Products = products
+        });
     }
+
+
+
+
 }
