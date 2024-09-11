@@ -4,6 +4,11 @@
 
 <h5>Index Sayfası</h5>
 
+@if(Model.Products.Count()==0)
+{
+    <p>Ürün Bulunamadı.</p>
+}
+
 @foreach(var p in Model.Products)
 {
     <di>
