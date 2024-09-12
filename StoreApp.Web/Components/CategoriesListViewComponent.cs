@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
 using StoreApp.Data.Abstract;
+using StoreApp.Web.Models;
 
 namespace StoreApp.Web.Components;
 
@@ -17,11 +18,15 @@ public class CategoriesListViewComponent:ViewComponent
     {
 
         return View(_storeRepository
-                                    .Products
-                                    .Select(c => c.Category)
-                                    .Distinct()
-                                    .OrderBy(c=>c)
-                   );   
+                                    .Categories
+                                    .Select(c => new CategoryViewModel{
+                                                                        Id = c.Id,
+                                                                        Name = c.Name,
+                                                                        Url = c.Url
+                                                                      }  
+                                           )
+                                    .ToList()
+                    );   
          
     }
 

@@ -1,4 +1,4 @@
-@model IEnumerable<string>
+@model IEnumerable<CategoryViewModel>
 
 <div class="d-grid gap-2">
     <a class="btn btn-outline-secondary"
@@ -10,7 +10,7 @@
     {
         <a  class="btn btn-outline-secondary"
         asp-action = "Index"
-        asp-controller="Home"> @category
+        asp-controller="Home"> @category.Name
         </a>
     }
 </div>
