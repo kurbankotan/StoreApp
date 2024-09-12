@@ -12,5 +12,5 @@ public class Product
 
     public decimal Price { get; set; }
 
-    public string Caategory { get; set; } = string.Empty;
+    public string Category { get; set; } = string.Empty;
 }
