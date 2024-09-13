@@ -1,13 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using StoreApp.Data.Abstract;
 using StoreApp.Data.Concrete;
+using StoreApp.Web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Controllers'larla Views'leri ilişikeldirdiği bir yapı kullanacağımıza dair servisi ekleyelim
 builder.Services.AddControllersWithViews();
 
-
+// AutoMapper servisi ekle
+builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 
 builder.Services.AddDbContext<StoreDbContext>(options => {
     options.UseSqlite(builder.Configuration["ConnectionStrings:StoreDbConnection"], b => b.MigrationsAssembly("StoreApp.Web"));
