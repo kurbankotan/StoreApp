@@ -22,12 +22,22 @@ builder.Services.AddDbContext<StoreDbContext>(options => {
 
 builder.Services.AddScoped<IStoreRepository,EFStoreRepository>();
 
+// Session'ın Bellek üzerinde kullanılan yöntemini seçelim 
+builder.Services.AddDistributedMemoryCache();
+
+//Session'ı eklemek için
+builder.Services.AddSession();
+
 
 //Önce build edelim
 var app = builder.Build();
 
 //Build ettikten sonra statik dosyaları kullanıcağız
 app.UseStaticFiles();
+
+//Session'ı aktif etmek için
+app.UseSession();
+
 
 //products/telefon        => O kategorideki Ürün Listesi
 app.MapControllerRoute("products_in_category", "products/{category?}", new {controller="Home", action ="Index"});
