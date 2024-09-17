@@ -32,5 +32,16 @@ namespace StoreApp.Web.Pages
             return RedirectToPage("/cart");
         }
 
+        public IActionResult OnPostRemove(int Id)
+        {
+            Cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            Cart?.RemoveItem(Cart.Items.First(p=>p.Product.Id == Id).Product);
+            HttpContext.Session.SetJson("cart", Cart);
+            return RedirectToPage("/Cart");
+        }
+
     }
+
+
+
 }
