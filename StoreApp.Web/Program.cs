@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 //Controllers'larla Views'leri ilişikeldirdiği bir yapı kullanacağımıza dair servisi ekleyelim
 builder.Services.AddControllersWithViews();
 
+//RazorPages'ları llanacağımıza dair servisi ekleyelim
+builder.Services.AddRazorPages();
+
 // AutoMapper servisi ekle
 builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 
@@ -36,5 +39,8 @@ app.MapControllerRoute("product_details", "{name}", new {controller="Home", acti
 
 //Default Route Şeması eklensin
 app.MapDefaultControllerRoute();   //Controller'in adı, View ve Id şeklinde
+
+//Razorpages için de Route'ini ekleyelim ki yönlendirme yapsın
+app.MapRazorPages();
 
 app.Run();
