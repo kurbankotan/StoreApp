@@ -29,6 +29,9 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<Cart>(sc => SessionCart.GetCart(sc));
+
 //Önce build edelim
 var app = builder.Build();
 

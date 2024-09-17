@@ -1,7 +1,7 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace StoreApp.Web;
+namespace StoreApp.Web.Helpers;
 
 public static class SessionExtentions
 {
