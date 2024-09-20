@@ -4,7 +4,7 @@ public class Order
 {
     public int Id { get; set; }
 
-    public DateTime OrderData { get; set; }
+    public DateTime OrderDate { get; set; }
 
     public string Name { get; set; } = null!;
 
@@ -26,11 +26,11 @@ public class OrderItem
 
     public int OrderId { get; set; }
 
-    public Order Order { get; set; } = new();
+    public Order Order { get; set; } =null!;
 
     public int ProductId { get; set; }
 
-    public Product Product { get; set; } = new();
+    public Product Product { get; set; } =null!;
 
     public double Price { get; set; }
 

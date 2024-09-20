@@ -21,6 +21,7 @@ builder.Services.AddDbContext<StoreDbContext>(options => {
 
 
 builder.Services.AddScoped<IStoreRepository,EFStoreRepository>();
+builder.Services.AddScoped<IOrderRepository,EfOrderRepository>();
 
 // Session'ın Bellek üzerinde kullanılan yöntemini seçelim 
 builder.Services.AddDistributedMemoryCache();
